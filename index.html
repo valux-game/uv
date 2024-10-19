@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Proxy</title>
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="uv/js/register-sw.js" defer></script>
+    <script src="uv/js/search.js" defer></script>
+    <script src="uv/js/index.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        background-color: rgb(41, 41, 41);
+        margin: 0;
+      }
+      .searchq {
+        background-color: rgb(73, 73, 73);
+        border: solid 2px gray;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        transition: 0.5s;
+      }
+      .searchq::placeholder {
+        color: white;
+        font-size: 17px;
+        text-align: center;
+      }
+      .searchq:focus {
+        outline: none;
+        background-color: rgb(44, 44, 44);
+
+        width: 90% !important;
+      }
+    </style>
+  </head>
+    
+  <body>
+    <div style="top: 12px; position: relative; border-radius: 15px; height: 55px; background-color: rgb(20, 20, 20); left: 50%; transform: translateX(-50%); width: 98%; display: flex; align-items: center; justify-content: left;">
+      <a  style="left: 10px; position: relative;" href="https://sz-games.github.io" aria-label="Home">  
+        <img alt="Icon" fetchpriority="low" src="https://github.com/sz-games/home/blob/main/G.png?raw=true" style="height: 30px; width: 30px; margin-right: 10px;"> 
+      </a>
+      <h3 style="left: 10px; position: relative; margin: 0; color: white;">Sz Games</h3>
+     <div style="width: 3px; left: 20px; margin: 0; border-radius: 5px; height: 50%; top: 14px; transform: translateY(-50%); background-color: rgba(128, 128, 128, 0.658); position: relative;"></div>
+     <h3 style="left: 30px; position: relative; margin: 0; color: white;">Unblocker</h3>
+
+    </div>
+    
+    <div style="position: relative; top: 20%; left: 50%; transform: translate(-50%, 15%); height: 50%; width: 60%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  
+      <h1 style="font-size: 40px; text-align: center; margin: 0;">Search The Web Without Limits!</h1>
+    
+      <form id="uv-form-test"  style="margin-top: 40px; width: 80%; text-align: center;">
+        <input id="uv-search-enginepref" value="https://www.google.com/search?q=%s" type="hidden" />
+        <input 
+          id="uv-addressloc" 
+          type="text" 
+          class="searchq"
+          placeholder="Search The Web"
+          style="height: 40px; width: 80%;"
+        />
+      </form>
+      <a href="./RammerheadProxys.html" style="text-decoration: none; color: white;">
+        <p style="font-weight: 600; background-color: rgb(61, 61, 61); cursor: pointer; padding: 10px; border: solid 3px rgb(43, 43, 43); border-radius: 15px;">Select A Different Service</p>
+      </a>
+      <a href="https://forms.gle/3eanrSMcAHdf9rTy6" style="margin-top: -15px; text-decoration: none; color: white;">
+        <p style="font-weight: 600; background-color: rgb(61, 61, 61); cursor: pointer; padding: 10px; border: solid 3px rgb(43, 43, 43); border-radius: 15px;">Report A Problem</p>
+      </a>
+    <p style="text-align: center;">If You get a 404 Error Reload A Few Times And Try Again.</p>
+
+    <p style="text-align: center; margin-top: -10px;">Please Dont Enter Sensative Info While Using This Unblocker.</p>
+
+    </div>
+
+    <script>
+
+      async function reg(){
+          try {
+              await registerSW();
+              location.reload();
+          } catch (err) {
+             console.log('Failed!')
+          }
+      }
+
+      async function unreg(){
+          navigator.serviceWorker.getRegistrations().then(regis => {
+              for (const regi of regis) {
+                  regi.unregister();
+              } 
+          });
+
+          location.reload()
+      }
+    //to be used later
+    </script>
+
+
+  </body>
+</html>
