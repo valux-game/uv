@@ -249,7 +249,7 @@ async function reg(){
 async function checkServiceWorker() {
     if ('serviceWorker' in navigator) {
         
-            navigator.serviceWorker.register('/sw.js') 
+            navigator.serviceWorker.register('/uv/sw.js') 
                 .then((registration) => {
                   serload.style.display = 'none'
                   passedser.style.display = 'block'
