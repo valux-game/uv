@@ -6,12 +6,16 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Proxy</title>
+    <title>Sz Games Unblocker</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1654900800235927"
+    crossorigin="anonymous"></script>
     <script src="uv/uv.bundle.js" defer></script>
     <script src="uv/uv.config.js" defer></script>
     <script src="uv/js/register-sw.js" defer></script>
     <script src="uv/js/search.js" defer></script>
     <script src="uv/js/index.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <style>
       body {
         font-family: Arial, Helvetica, sans-serif;
@@ -38,10 +42,270 @@
 
         width: 90% !important;
       }
+
+      .slider {
+    position: fixed;
+    width: 450px;
+    height: 275px;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    border: 3px solid #727272;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100% !important;
+    
+    font-size: 24px;
+    color: white;
+    background-color: #2c2c2c;
+    border-right: 1px solid #ccc;
+}
+
+.active {
+   
+}
+
+@keyframes rotate {
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(-360deg);}
+  100% {transform: rotate(-360deg);}
+
+}
+
     </style>
   </head>
     
   <body>
+    <div id="checkscont" style="width: 100%; position: fixed; height: 100%; z-index: 1000; background-color: rgba(0, 0, 0, 0.603);">
+       <div class="slider">
+          <div class="slides">
+              <div class="slide active">
+                <h1 style="text-align: center; font-size: 30px;">Hello!</h1>
+                
+                <p style="font-size: 20px; text-align: center; margin: 10px;">We Just need To Check Some Things Before You Use The Unblocker.</p>
+                <p style="font-size: 15px; text-align: center; margin: 20px;">This Should Only Take A Few Seconds.</p>
+                <button onclick="changePage(1); 
+                setTimeout(() => {
+                  checkLinkAccessibility('https://solitary-haze-aa1f.projectorsum.workers.dev/');
+                }, 2500); " style="left: 50%; cursor: pointer; position: relative; color: white; height: 45px; background-color: #4e4e4e; border: none; border-radius: 15px; width: 75%; transform: translateX(-50%);">
+                  Continue
+                </button>
+              </div>
+              <div class="slide">
+                <h1 style="text-align: center; font-size: 30px;">Checking...</h1>
+                <p style="font-size: 20px; text-align: center; margin: 10px;"> 
+                  Server Is Not Blocked
+                  <span id="linkload" class="material-icons" style="color: rgb(255, 255, 255); animation: infinite rotate 2s; margin-top: 25px;">
+                    sync
+                  </span>
+                  <span id="passedlink" class="material-icons" style="display: none; color: rgb(47, 255, 82); margin-top: 25px;">
+                    check
+                  </span>
+                  <span id="failedlink" class="material-icons" style="display: none; color: rgb(255, 0, 0); margin-top: 25px;">
+                    close
+                  </span>
+                </p>
+                <p style="font-size: 20px; text-align: center; margin: 10px;"> 
+                  Registered Service Worker
+                  <span id="serload" class="material-icons" style="color: rgb(255, 255, 255); animation: infinite rotate 2s; margin-top: 25px;">
+                    sync
+                  </span>
+                  <span id="passedser" class="material-icons" style="display: none; color: rgb(47, 255, 82); margin-top: 25px;">
+                    check
+                  </span>
+                  <span id="failedser" class="material-icons" style="display: none; color: rgb(255, 0, 0); margin-top: 25px;">
+                    close
+                  </span>
+                </p>
+
+              </div>
+              <div class="slide">
+                <h1 style="text-align: center; font-size: 30px;">Sorry!</h1>
+                
+                <p style="font-size: 20px; text-align: center; margin: 10px;">It Apears the Unblocker Is Blocked By Your Admins.</p>
+                <p style="font-size: 15px; text-align: center; margin: 20px;">You Can Submit A Report If You Think This Is Wrong</p>
+                <p style="font-size: 15px; text-align: center; margin: 20px;"><a href="./index.html" style="text-decoration: underline; color: white; cursor: pointer;">Go Home</a></p>
+
+              </div>
+              <div class="slide">
+                <h1 style="text-align: center; font-size: 30px;">Sorry!</h1>
+
+                <p style="font-size: 20px; text-align: center; margin: 10px;">The Service Worker Failed To Register</p>
+                <p style="font-size: 15px; text-align: center; margin: 20px;">This May Be A One Time Issue, You Can Try Again</p>
+                <p style="font-size: 15px; text-align: center; margin: 20px;"><a href="./index.html" style="text-decoration: underline; color: white; cursor: pointer;">Go Home</a></p>
+                <button onclick="reg();" style="left: 50%; cursor: pointer; position: relative; color: white; height: 45px; background-color: #4e4e4e; border: none; border-radius: 15px; width: 75%; transform: translateX(-50%);">
+                  Try again (The page Will Reload)
+                </button>
+              </div>
+              <div class="slide">
+                <h1 style="text-align: center; font-size: 30px;">Your All Set!</h1>
+
+                <p style="font-size: 20px; text-align: center; margin: 10px;">Your Ready To Use The Unblocker!</p>
+                <p style="font-size: 15px; text-align: center; margin: 20px;">If You encounter A 404 error Reload Your page And Try Agian</p>
+                
+                <button onclick="donecheck(); setPassedChecks();" style="left: 50%; cursor: pointer; position: relative; color: white; height: 45px; background-color: #4e4e4e; border: none; border-radius: 15px; width: 75%; transform: translateX(-50%);">
+                  Close
+                </button>
+              </div>
+          </div>
+       </div>
+    </div>
+   
+    <script>
+let currentPage = 0;
+
+var linkload = document.getElementById('linkload')
+var passedlink = document.getElementById('passedlink')
+var failedlink = document.getElementById('failedlink')
+
+var serload = document.getElementById('serload')
+var passedser = document.getElementById('passedser')
+var failedser = document.getElementById('failedser')
+
+var passedlink;
+var passedser;
+function changePage(direction) {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    // Remove active class from the current slide
+    slides[currentPage].classList.remove('active');
+
+    // Update the current page index
+    currentPage = direction;
+
+    // Add active class to the new slide
+    slides[currentPage].classList.add('active');
+
+    // Adjust the slide position for animation
+    const slidesContainer = document.querySelector('.slides');
+    slidesContainer.style.transform = `translateX(-${currentPage * 100}%)`;
+}
+
+
+  async function checkLinkAccessibility(url) {
+    
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+
+        // Check if the response is OK (status in the range 200-299)
+        if (response.ok) {
+            console.log("Link is accessible.");
+            handleAccessibleLink(); // Call your custom function for accessible links
+        } else {
+            console.log("Link is blocked or not accessible.");
+            handleBlockedLink(); // Call your custom function for blocked links
+        }
+    } catch (error) {
+        console.error("Error fetching the link:", error);
+        handleBlockedLink(); // Handle error as blocked
+    }
+}
+
+function handleAccessibleLink() {
+    linkload.style.display = 'none'
+    passedlink.style.display = 'block'
+    checkServiceWorker(); 
+    console.log("Executing actions for accessible links...");
+}
+
+function handleBlockedLink() {
+    linkload.style.display = 'none'
+    failedlink.style.display = 'block'
+    changePage(2);
+    console.log("Executing actions for blocked links...");
+}
+async function reg(){
+          try {
+              await registerSW();
+              location.reload();
+          } catch (err) {
+             console.log('Failed!')
+          }
+      }
+
+      async function unreg(){
+          navigator.serviceWorker.getRegistrations().then(regis => {
+              for (const regi of regis) {
+                  regi.unregister();
+              } 
+          });
+
+          location.reload()
+      }
+  
+async function checkServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        
+            navigator.serviceWorker.register('/sw.js') 
+                .then((registration) => {
+                  serload.style.display = 'none'
+                  passedser.style.display = 'block'
+                  changePage(4);
+
+                    console.log('Service worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.error('Service worker registration failed:', error);
+                    serload.style.display = 'none'
+                    failedser.style.display = 'block'
+                    changePage(3);
+
+                });
+        
+    } else {
+        console.log("Service workers are not supported in this browser.");
+    }
+    
+}
+
+
+function checkPassedChecks() {
+    const alreadyPassedChecks = localStorage.getItem('alreadypassedchecks');
+
+    if (alreadyPassedChecks === 'true') {
+        console.log("Already passed checks. Executing the function...");
+        executeAlreadyPassedChecks();
+    } else {
+        console.log("Checks not passed yet. Setting localStorage item...");
+        
+    }
+}
+
+function setPassedChecks() {
+    localStorage.setItem('alreadypassedchecks', 'true');
+    console.log("Local storage item 'alreadypassedchecks' has been set to true.");
+}
+
+function executeAlreadyPassedChecks() {
+    console.log("Executing actions for already passed checks...");
+    donecheck()
+}
+
+function donecheck() {
+  document.getElementById('checkscont').style.display = 'none'
+}
+
+checkPassedChecks();
+
+
+
+
+
+    </script>
+
     <div style="top: 12px; position: relative; border-radius: 15px; height: 55px; background-color: rgb(20, 20, 20); left: 50%; transform: translateX(-50%); width: 98%; display: flex; align-items: center; justify-content: left;">
       <a  style="left: 10px; position: relative;" href="https://sz-games.github.io" aria-label="Home">  
         <img alt="Icon" fetchpriority="low" src="https://github.com/sz-games/home/blob/main/G.png?raw=true" style="height: 30px; width: 30px; margin-right: 10px;"> 
@@ -76,31 +340,67 @@
 
     <p style="text-align: center; margin-top: -10px;">Please Dont Enter Sensative Info While Using This Unblocker.</p>
 
+
+    <div>
+      <div style="float: left; width: 150px; margin-left: 15px; cursor: pointer; height: 150px; position: relative;">
+        <a href="/uv/service/hvtrs8%2F-wuw%2Cgmoelg.aoo%2F">
+          <img style="position: relative; width: 100%; border-radius: 15px; height: 100%;" src="/imgs/google.jpg">
+          <h1 style="position: absolute; bottom: 5px; left: 50%; font-size: 20px; transform: translateX(-50%); text-shadow: 0px 0px 5px #000000; color: rgb(255, 255, 255);">Google</h1>
+        </a>
+      </div>
+      <div style="float: left; width: 150px; margin-left: 15px; cursor: pointer; height: 150px; position: relative;">
+        <a href="/uv/service/hvtrs8%2F-smuldalmuf.aoo%2F">
+          <img style="position: relative; width: 100%; border-radius: 15px; height: 100%;" src="/imgs/soundcloud.webp">
+          <h1 style="position: absolute; bottom: 5px; left: 50%; font-size: 20px; transform: translateX(-50%); text-shadow: 0px 0px 5px #000000; color: rgb(255, 255, 255);">Soundcloud</h1>
+        </a>
+      </div>
+      <div style="float: left; width: 150px; margin-left: 15px; cursor: pointer; height: 150px; position: relative;">
+        <a href="/uv/service/hvtrs8%2F-nmw%2Cge%2Fcprs-rmbnoz-aoppmrctkol%2F7369-rmbnoz.jtol">
+          <img style="position: relative; width: 100%; border-radius: 15px; height: 100%;" src="/imgs/roblox.png">
+          <h1 style="position: absolute; bottom: 5px; left: 50%; font-size: 20px; transform: translateX(-50%); text-shadow: 0px 0px 5px #000000; color: rgb(255, 255, 255);">Roblox</h1>
+        </a>
+      </div>
+      <div style="float: left; width: 150px; margin-left: 15px; cursor: pointer; height: 150px; position: relative;">
+        <a href="/uv/service/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-">
+          <img style="position: relative; width: 100%; border-radius: 15px; height: 100%;" src="/imgs/youtube.jpg">
+          <h1 style="position: absolute; bottom: 5px; left: 50%; font-size: 20px; transform: translateX(-50%); text-shadow: 0px 0px 5px #000000; color: rgb(255, 255, 255);">Youtube</h1>
+        </a>
+      </div>
+      <div style="float: left; width: 150px; margin-left: 15px; cursor: pointer; height: 150px; position: relative;">
+        <a href="/uv/service/hvtrs8%2F-wuw%2Ccjeqs%2Ccmm-">
+          <img style="position: relative; width: 100%; border-radius: 15px; height: 100%;" src="/imgs/chess.png">
+          <h1 style="position: absolute; bottom: 5px; left: 50%; font-size: 20px; transform: translateX(-50%); text-shadow: 0px 0px 5px #000000; color: rgb(255, 255, 255);">Chess</h1>
+        </a>
+      </div>
+      <div style="float: left; width: 150px; margin-left: 15px; cursor: pointer; height: 150px; position: relative;">
+        <a href="/uv/service/hvtrs8%2F-cjapaatgr%2Cak%2F">
+          <img style="position: relative; width: 100%; border-radius: 15px; height: 100%;" src="/imgs/cai.png">
+          <h1 style="position: absolute; bottom: 5px; left: 50%; font-size: 20px; transform: translateX(-50%); text-shadow: 0px 0px 5px #000000; color: rgb(255, 255, 255);">Character.AI</h1>
+        </a>
+      </div>
+      <div style="float: left; width: 150px; margin-left: 15px; cursor: pointer; height: 150px; position: relative;">
+        <a href="/uv/service/hvtrs8%2F-vqcmdg.fet%2F">
+          <img style="position: relative; width: 100%; border-radius: 15px; height: 100%;" src="/imgs/vscode.png">
+          <h1 style="position: absolute; text-align: center; bottom: 5px; left: 50%; font-size: 20px; transform: translateX(-50%); text-shadow: 0px 0px 5px #000000; color: rgb(255, 255, 255);">VS Code</h1>
+        </a>
+      </div>
+      <div style="float: left; width: 150px; margin-left: 15px; cursor: pointer; height: 150px; position: relative;">
+        <a href="/uv/service/hvtrs8%2F-wuw%2Crgdfiv.aoo%2F%3Drft%3F5%3B671">
+          <img style="position: relative; width: 100%; border-radius: 15px; height: 100%;" src="/imgs/reddit.png">
+          <h1 style="position: absolute; text-align: center; bottom: 5px; left: 50%; font-size: 20px; transform: translateX(-50%); text-shadow: 0px 0px 5px #000000; color: rgb(255, 255, 255);">Reddit</h1>
+        </a>
+      </div>
+    </div>
+
+
     </div>
 
     <script>
 
-      async function reg(){
-          try {
-              await registerSW();
-              location.reload();
-          } catch (err) {
-             console.log('Failed!')
-          }
-      }
-
-      async function unreg(){
-          navigator.serviceWorker.getRegistrations().then(regis => {
-              for (const regi of regis) {
-                  regi.unregister();
-              } 
-          });
-
-          location.reload()
-      }
-    //to be used later
+   
     </script>
 
 
   </body>
 </html>
+ 
